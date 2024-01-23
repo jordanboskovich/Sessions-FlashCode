@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Game Stat Tracker</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('partials/navBar') %>
+  
+  <% if (flashMessages.info) { %>
+    <div class="alert alert-info">
+      <%= flashMessages.info %>
+    </div>
+  <% } %>
+  <% if (flashMessages.danger) { %>
+    <div class="alert alert-danger">
+      <%= flashMessages.danger %>
+    </div>
+  <% } %>
+  <% if (flashMessages.warning) { %>
+    <div class="alert alert-warning">
+      <%= flashMessages.warning %>
+    </div>
+  <% } %>
+  <% if (flashMessages.success) { %>
+    <div class="alert alert-success">
+      <%= flashMessages.success %>
+    </div>
+  <% } %>
+ 
+  <div class="container mt-5">
+    <form id="playForm" action="submitPlay" method="post">
+      <!-- Play Type Selection -->
+      <div class="form-group">
+        <label for="playType">Play Type</label>
+        <select id="playType" name="playType" class="form-control">
+          <option value="none">Make a Selection</option>
+          <option value="offense">Offense</option>
+          <option value="defense">Defense</option>
+        </select>
+      </div>
+
+      <!-- Offensive Play Options -->
+      <div id="offenseOptions" class="form-group" style="display:none;">
+        <label for="offensePlay">Offensive Play</label>
+        <select id="offensePlay" name="offensePlay" class="form-control">
+          <option value="none">Make a Selection</option>
+          <option value="run">Run</option>
+          <option value="pass">Pass</option>
+        </select>
+      </div>
+
+      <!-- Run Play Options -->
+      <div id="runOptions" class="form-group" style="display:none;">
+        <label for="runner">Runner</label>
+        <select name="runner" id="runner" class="form-control">
+          <%- include('partials/playerOptions') %>
+        </select>
+        <input type="number" name="runYards" class="form-control mt-2" placeholder="Yards Gained">
+      </div>
+
+      <!-- Pass Play Options -->
+      <div id="passOptions" class="form-group" style="display:none;">
+        <label for="passer">Passer</label>
+        <select name="passer" id="passer" class="form-control">
+          <%- include('partials/playerOptions') %>
+        </select>
+        <label for="receiver" class="mt-2">Receiver</label>
+        <select name="receiver" id="receiver" class="form-control">
+          <%- include('partials/playerOptions') %>
+        </select>
+        <input type="number" name="passYards" class="form-control mt-2" placeholder="Yards Gained">
+      </div>
+
+      <!-- Defensive Play Options -->
+      <div id="defenseOptions" class="form-group" style="display:none;">
+        <label for="defender">Defender</label>
+        <select name="defender" id="defender" class="form-control">
+          <%- include('partials/playerOptions') %>
+        </select>
+        <label for="defensiveAction" class="mt-2">Defensive Action</label>
+        <select name="defensiveAction" id="defensiveAction" class="form-control">
+          <option value="none">Make a Selection</option>
+          <option value="interception">Interception</option>
+          <option value="sack">Sack</option>
+          <option value="tackle">Tackle</option>
+          <option value="passDefense">Pass Defense</option>
+        </select>
+      </div>
+
+      <!-- Touchdown Checkbox -->
+      <div class="form-check mt-3">
+        <input type="checkbox" id="touchdown" name="touchdown" class="form-check-input">
+        <label for="touchdown" class="form-check-label">Touchdown?</label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary mt-3">Update Stats</button>
+    </form>
+  </div>
+
+  <script src="gameLog.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // JavaScript to handle form changes goes here
+  </script>
+
+</body>
+</html>

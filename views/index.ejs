@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Westridge Flag Football</title>
+  <script src="https://kit.fontawesome.com/297392fead.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('partials/navBar') %>
+
+  <!-- Player Stats Table -->
+  <div class="container mt-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Year</th>
+          <th>Rec</th>
+          <th>Rec Yds</th>
+          <th>Rush</th>
+          <th>Rush Yds</th>
+          <th>Pass Atts</th>
+          <th>Pass Comps</th>
+          <th>Pass Yds</th>
+          <th>Rush TDs</th>
+          <th>Rec TDs</th>
+          <th>Pass TDs</th>
+          <th>Off Ints</th>
+          <th>Def Ints</th>
+          <th>Sacks</th>
+          <th>Tackles</th>
+          <th>Pass Defs</th>
+          <th>Def TDs</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% players.forEach((player) => { %>
+        <tr>
+          <td><%= player.playerName %></td>
+          <td><%= player.playerNumber %></td>
+          <td><%= player.yr %></td>
+          <td><%= player.receptions %></td>
+          <td><%= player.recYds %></td>
+          <td><%= player.rushes %></td>
+          <td><%= player.rushYds %></td>
+          <td><%= player.passAttempts %></td>
+          <td><%= player.passCompletions %></td>
+          <td><%= player.passYds %></td>
+          <td><%= player.rushTDs %></td>
+          <td><%= player.recTDs %></td>
+          <td><%= player.passTDs %></td>
+          <td><%= player.intsThrown %></td>
+          <td><%= player.intsMade %></td>
+          <td><%= player.sacks %></td>
+          <td><%= player.tackles %></td>
+          <td><%= player.passDefenses %></td>
+          <td><%= player.defTDs %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
